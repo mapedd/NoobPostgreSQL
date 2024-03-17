@@ -20,8 +20,8 @@ Seems there are few most important bits to configure when it comes to using Post
       2. To delete database `DROP DATABASE new_db;` (remember semicolon)
       3. To show list of databases on given server: `postgres=# \l`
       4. Example output:
-         ```
-                                                                   List of databases
+```
+List of databases
       Name      |  Owner   | Encoding | Locale Provider |   Collate   |    Ctype    | ICU Locale | ICU Rules |   Access privileges   
 ----------------+----------+----------+-----------------+-------------+-------------+------------+-----------+-----------------------
  mapedd         | mapedd   | UTF8     | libc            | en_US.UTF-8 | en_US.UTF-8 |            |           | 
@@ -32,9 +32,7 @@ Seems there are few most important bits to configure when it comes to using Post
                 |          |          |                 |             |             |            |           | postgres=CTc/postgres
  vapor_database | mapedd   | UTF8     | libc            | en_US.UTF-8 | en_US.UTF-8 |            |           | 
  wheely         | mapedd   | UTF8     | libc            | en_US.UTF-8 | en_US.UTF-8 |            |           | 
-(6 rows)
-
-~
+(6 rows)         
 ```
    5. DATABASE_USERNAME
    6. DATABASE_PASSWORD
