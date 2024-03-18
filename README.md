@@ -3,7 +3,7 @@ Solutions to silly PosgreSQL problems
 
 #1. Launching PosgreSQL servers
 From what I can see, there are 3 popular ways of launching Postgres servers:
-1. homebrew service
+1. homebrew service [nice guide here](https://www.atlassian.com/data/admin/how-to-start-postgresql-server-on-mac-os-x)
    ```brew services start postgresql```
 3. mac app [https://postgresapp.com/](Link)
 4. standalone binary
@@ -42,6 +42,25 @@ List of databases
 ```
 [ WARNING ] PSQLError(code: server, serverInfo: [sqlState: 28000, file: miscinit.c, line: 756, message: role "vapor_username" does not exist, routine: InitializeSessionUserId, localizedSeverity: FATAL, severity: FATAL])
 Swift/ErrorType.swift:200: Fatal error: Error raised at top level: PSQLError(code: server, serverInfo: [sqlState: 28000, file: miscinit.c, line: 756, message: role "vapor_username" does not exist, routine: InitializeSessionUserId, localizedSeverity: FATAL, severity: FATAL])
+```
+
+This problem might be caused by the fact that default Vapor DockerCompose file specifies `vapor_username` and `vapor_password` as credentials, where's :
+1. default usename for most Unix distributions postgres
+2. for homebrew, your mac user will be added as postgres user, probably it's beacue of `peer` authentication method
+
+To solve the problem you can change values in docker compose files, or create the postgres user
+1. [change defult user password](https://www.atlassian.com/data/admin/how-to-set-the-default-user-password-in-postgresql)
+2. [add super user](https://www.atlassian.com/data/admin/how-to-change-a-user-to-superuser-in-postgresql)
+3. [advanced user creation](https://www.atlassian.com/data/admin/create-a-user-with-psql)
+
+# Tidbits
+
+## Show postgres config file:
+```
+mapedd=# SHOW config_file;
+                                config_file                                
+---------------------------------------------------------------------------
+ /Users/mapedd
 ```
 
 # Interesting links
